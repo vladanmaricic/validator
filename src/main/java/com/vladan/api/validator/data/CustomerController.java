@@ -40,6 +40,7 @@ public class CustomerController {
             CompletableFuture<Article> article2 = articleService.findArticle("2");
             CompletableFuture<Article> article3 = articleService.findArticle("3");
 
+            //waiting for all calls to complete before going further
             CompletableFuture.allOf(article1, article2, article3).join();
 
             log.info(article1.get().getTitle());
